@@ -1,0 +1,222 @@
+# LLM Prompts and Outputs for VibeDeck
+
+This file contains example prompts and AI outputs for developing and maintaining the VibeDeck Kanban application.
+
+## REFACTOR PROMPTS
+
+### Prompt 1: Component Optimization
+```
+I have a React component that handles drag and drop for Kanban tasks. The component is getting large and has multiple responsibilities. Here's the current Board.tsx component:
+
+[Component code would be pasted here]
+
+Please help me refactor this into smaller, more focused components while maintaining the drag and drop functionality.
+```
+
+**Expected AI Output:**
+- Break down Board.tsx into smaller components (BoardHeader, BoardStats, BoardActions)
+- Extract drag and drop logic into custom hooks (useDragAndDrop, useBoardOperations)
+- Separate concerns for better maintainability
+- Maintain TypeScript types and proper prop passing
+
+### Prompt 2: State Management Refactor
+```
+My Zustand store is becoming complex with many actions. Here's my current kanbanStore.ts:
+
+[Store code would be pasted here]
+
+How can I refactor this to be more modular and easier to test?
+```
+
+**Expected AI Output:**
+- Split store into slices (taskSlice, columnSlice, historySlice)
+- Create separate action creators
+- Add proper TypeScript interfaces
+- Implement store composition patterns
+- Add unit test examples
+
+## STYLING PROMPTS
+
+### Prompt 3: Theme System Enhancement
+```
+I want to add a new theme called "Synthwave" to my existing theme system. Current themes are Minimal Pastel, Dark Academia, and Y2K Cyber. The new theme should have:
+- Purple and pink neon colors
+- Dark background
+- Glowing effects
+- 80s aesthetic
+
+Here's my current ThemeContext.tsx:
+[Context code would be pasted here]
+```
+
+**Expected AI Output:**
+- New theme configuration with synthwave colors
+- CSS custom properties for the theme
+- Gradient definitions
+- Animation enhancements for glow effects
+- Updated theme selector UI
+
+### Prompt 4: Responsive Design Improvements
+```
+My Kanban board works well on desktop but needs better mobile experience. Current issues:
+- Columns are too narrow on mobile
+- Drag and drop is difficult on touch devices
+- Header takes too much space
+
+Please suggest improvements for mobile responsiveness.
+```
+
+**Expected AI Output:**
+- Mobile-first CSS improvements
+- Touch-friendly drag and drop enhancements
+- Responsive column sizing
+- Mobile navigation patterns
+- Gesture-based interactions
+
+## DEBUG PROMPTS
+
+### Prompt 5: Drag and Drop Issues
+```
+I'm experiencing issues with drag and drop in my Kanban board:
+1. Sometimes tasks don't drop in the correct position
+2. Dragging feels laggy on mobile devices
+3. Visual feedback during drag is inconsistent
+
+Here's my drag handler code:
+[Code would be pasted here]
+
+What could be causing these issues and how can I fix them?
+```
+
+**Expected AI Output:**
+- Collision detection algorithm improvements
+- Performance optimization suggestions
+- Mobile touch event handling fixes
+- Visual feedback consistency solutions
+- Debugging strategies and logging
+
+### Prompt 6: State Persistence Problems
+```
+Users are reporting that their Kanban boards sometimes reset when they refresh the page. I'm using Zustand with persistence middleware. Here's my store configuration:
+
+[Store code would be pasted here]
+
+What could be causing the persistence to fail intermittently?
+```
+
+**Expected AI Output:**
+- localStorage quota and error handling
+- Serialization/deserialization issues
+- Browser compatibility considerations
+- Fallback strategies for persistence failures
+- Migration strategies for schema changes
+
+## FEATURE DEVELOPMENT PROMPTS
+
+### Prompt 7: Add Task Dependencies
+```
+I want to add task dependencies to my Kanban board where tasks can be blocked by other tasks. How should I:
+1. Modify the data structure
+2. Update the UI to show dependencies
+3. Prevent moving blocked tasks
+4. Show dependency relationships visually
+```
+
+**Expected AI Output:**
+- Database schema modifications
+- UI components for dependency visualization
+- Business logic for dependency validation
+- Visual indicators and connections
+- User interaction patterns
+
+### Prompt 8: Real-time Collaboration
+```
+I want to add real-time collaboration to VibeDeck so multiple users can work on the same board simultaneously. What's the best approach using:
+- WebSockets or Server-Sent Events
+- Conflict resolution strategies
+- User presence indicators
+- Optimistic updates with rollback
+```
+
+**Expected AI Output:**
+- WebSocket implementation strategy
+- Operational transformation concepts
+- User presence UI components
+- Conflict resolution algorithms
+- Real-time synchronization patterns
+
+## PERFORMANCE OPTIMIZATION PROMPTS
+
+### Prompt 9: Large Board Performance
+```
+My Kanban board becomes slow when there are 100+ tasks across multiple columns. The main performance issues are:
+- Slow rendering during drag operations
+- Memory usage increases over time
+- Animations become janky
+
+How can I optimize for large datasets?
+```
+
+**Expected AI Output:**
+- Virtual scrolling implementation
+- React.memo and useMemo optimizations
+- Lazy loading strategies
+- Animation performance improvements
+- Memory leak prevention
+
+### Prompt 10: Bundle Size Optimization
+```
+My VibeDeck application bundle is getting large. Current size is 2.5MB. Main contributors seem to be:
+- Framer Motion animations
+- Multiple UI components from shadcn/ui
+- Date manipulation libraries
+
+How can I reduce the bundle size while maintaining functionality?
+```
+
+**Expected AI Output:**
+- Tree shaking optimization
+- Dynamic imports for heavy components
+- Alternative lightweight libraries
+- Code splitting strategies
+- Bundle analysis recommendations
+
+## TESTING PROMPTS
+
+### Prompt 11: Component Testing Strategy
+```
+I need to write comprehensive tests for my Kanban board components. What testing strategy should I use for:
+- Drag and drop interactions
+- Theme switching
+- State management
+- Responsive behavior
+```
+
+**Expected AI Output:**
+- Testing library recommendations (React Testing Library, Jest)
+- Mock strategies for drag and drop
+- Theme testing approaches
+- State testing patterns
+- Visual regression testing
+
+### Prompt 12: E2E Testing Scenarios
+```
+What end-to-end testing scenarios should I implement for VibeDeck to ensure the core user workflows work correctly?
+```
+
+**Expected AI Output:**
+- Critical user journey identification
+- Playwright/Cypress test scenarios
+- Cross-browser testing strategies
+- Mobile testing considerations
+- Performance testing integration
+
+---
+
+## USAGE NOTES
+
+- Replace placeholder code sections with actual code when using these prompts
+- Adapt prompts based on specific issues encountered
+- Use these as starting points for more detailed conversations
+- Consider context and current codebase state when applying suggestions
+- Always test AI-generated solutions thoroughly before implementing

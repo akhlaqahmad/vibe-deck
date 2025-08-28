@@ -1,0 +1,227 @@
+{
+  "project": {
+    "name": "VibeDeck",
+    "description": "Aesthetic Kanban board application with multiple themes",
+    "version": "1.0.0",
+    "framework": "React + TypeScript + Vite"
+  },
+  "design_system": {
+    "framework": "Tailwind CSS",
+    "ui_library": "shadcn/ui",
+    "animation_library": "Framer Motion",
+    "icons": "Lucide React",
+    "typography": {
+      "font_family": "Inter, system-ui, sans-serif",
+      "scales": {
+        "h1": "text-4xl font-bold",
+        "h2": "text-3xl font-bold", 
+        "h3": "text-2xl font-bold",
+        "body": "text-base",
+        "caption": "text-sm"
+      }
+    },
+    "spacing": {
+      "base_unit": "0.25rem",
+      "container_padding": "1rem md:1.5rem",
+      "component_gap": "1.5rem",
+      "card_padding": "1rem"
+    },
+    "border_radius": {
+      "small": "0.375rem",
+      "medium": "0.5rem", 
+      "large": "0.75rem",
+      "full": "9999px"
+    }
+  },
+  "themes": {
+    "minimal_pastel": {
+      "id": "minimal-pastel",
+      "name": "Minimal Pastel",
+      "description": "Soft, dreamy vibes",
+      "colors": {
+        "primary": "#F5B2D6",
+        "secondary": "#C8A8E9", 
+        "accent": "#A8DDD8",
+        "background": "#FEFEFE",
+        "foreground": "#1A1A1A",
+        "muted": "#F8F9FA",
+        "border": "#E9ECEF"
+      },
+      "gradients": {
+        "primary": "from-[#F5B2D6] to-[#F5B2D6]/80",
+        "secondary": "from-[#C8A8E9] to-[#C8A8E9]/80",
+        "accent": "from-[#A8DDD8] to-[#A8DDD8]/80",
+        "rainbow": "from-[#F5B2D6] via-[#C8A8E9] to-[#A8DDD8]"
+      }
+    },
+    "dark_academia": {
+      "id": "dark-academia",
+      "name": "Dark Academia",
+      "description": "Cozy, studious aesthetic",
+      "colors": {
+        "primary": "#D4AF8C",
+        "secondary": "#7B9971",
+        "accent": "#6B5B4F", 
+        "background": "#1C1917",
+        "foreground": "#F5F5DC",
+        "muted": "#292524",
+        "border": "#44403C"
+      },
+      "gradients": {
+        "primary": "from-[#D4AF8C] to-[#D4AF8C]/80",
+        "secondary": "from-[#7B9971] to-[#7B9971]/80", 
+        "accent": "from-[#6B5B4F] to-[#6B5B4F]/80",
+        "rainbow": "from-[#D4AF8C] via-[#7B9971] to-[#6B5B4F]"
+      }
+    },
+    "y2k_cyber": {
+      "id": "y2k",
+      "name": "Y2K Cyber",
+      "description": "Futuristic neon dreams",
+      "colors": {
+        "primary": "#FF66CC",
+        "secondary": "#00FFCC",
+        "accent": "#FFFF66",
+        "background": "#0A0A0A", 
+        "foreground": "#FFFFFF",
+        "muted": "#1A1A1A",
+        "border": "#333333"
+      },
+      "gradients": {
+        "primary": "from-[#FF66CC] to-[#FF66CC]/80",
+        "secondary": "from-[#00FFCC] to-[#00FFCC]/80",
+        "accent": "from-[#FFFF66] to-[#FFFF66]/80", 
+        "rainbow": "from-[#FF66CC] via-[#00FFCC] to-[#FFFF66]"
+      }
+    }
+  },
+  "layout": {
+    "structure": "header + main_content",
+    "header": {
+      "height": "4rem",
+      "position": "sticky top-0",
+      "backdrop_blur": true,
+      "border_bottom": true
+    },
+    "main": {
+      "layout": "container mx-auto",
+      "max_width": "7xl",
+      "padding": "responsive"
+    },
+    "grid_system": {
+      "columns": 12,
+      "breakpoints": {
+        "sm": "640px",
+        "md": "768px", 
+        "lg": "1024px",
+        "xl": "1280px",
+        "2xl": "1536px"
+      }
+    }
+  },
+  "components": {
+    "header": {
+      "elements": ["logo", "title", "theme_selector"],
+      "logo": {
+        "type": "icon_with_gradient",
+        "icon": "Sparkles",
+        "animation": "glow"
+      },
+      "theme_selector": {
+        "type": "dropdown_menu",
+        "trigger": "button_with_icon",
+        "content": "theme_grid"
+      }
+    },
+    "kanban_board": {
+      "layout": "horizontal_scroll",
+      "gap": "1.5rem",
+      "elements": ["columns", "add_column_card"]
+    },
+    "kanban_column": {
+      "width": "280px",
+      "min_height": "500px",
+      "elements": ["header", "task_list", "add_task_button"],
+      "header": {
+        "elements": ["emoji", "title", "task_count", "menu"]
+      },
+      "animations": {
+        "entrance": "fade_in_up",
+        "hover": "subtle_lift"
+      }
+    },
+    "task_card": {
+      "elements": ["emoji", "title", "description", "labels", "timestamps"],
+      "interactions": ["drag", "click_to_edit", "context_menu"],
+      "animations": {
+        "drag": "scale_and_rotate",
+        "hover": "subtle_glow"
+      }
+    },
+    "quick_add_fab": {
+      "position": "fixed bottom-right",
+      "type": "floating_action_button",
+      "animation": "pulse_glow"
+    },
+    "dialogs": {
+      "add_task": {
+        "fields": ["title", "description", "emoji_picker"],
+        "actions": ["cancel", "create"]
+      },
+      "add_column": {
+        "fields": ["title"],
+        "actions": ["cancel", "create"]
+      }
+    }
+  },
+  "interactions": {
+    "drag_and_drop": {
+      "library": "@dnd-kit/core",
+      "feedback": {
+        "visual": "ghost_preview",
+        "haptic": "subtle_vibration"
+      },
+      "drop_zones": ["columns", "tasks"]
+    },
+    "keyboard_shortcuts": {
+      "undo": "Ctrl/Cmd + Z",
+      "redo": "Ctrl/Cmd + Y",
+      "escape": "Close dialogs"
+    },
+    "gestures": {
+      "mobile_drag": "long_press_then_drag",
+      "desktop_drag": "click_and_drag"
+    }
+  },
+  "animations": {
+    "page_transitions": {
+      "type": "fade_in",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "component_entrance": {
+      "type": "stagger_fade_in_up",
+      "delay": "100ms_between_items"
+    },
+    "micro_interactions": {
+      "button_hover": "scale_105",
+      "card_hover": "lift_shadow",
+      "drag_start": "scale_102_rotate_2deg"
+    }
+  },
+  "responsive_design": {
+    "mobile_first": true,
+    "breakpoint_strategy": "progressive_enhancement",
+    "mobile_adaptations": {
+      "header": "compact_layout",
+      "columns": "horizontal_scroll",
+      "fab": "larger_touch_target"
+    }
+  },
+  "accessibility": {
+    "focus_management": "keyboard_navigation",
+    "screen_reader": "aria_labels_and_descriptions",
+    "color_contrast": "wcag_aa_compliant",
+    "reduced_motion": "respect_prefers_reduced_motion"
+  }
+}
