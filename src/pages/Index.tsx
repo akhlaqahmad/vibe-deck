@@ -1,13 +1,13 @@
 import React from 'react';
 import { Header } from '@/components/Header';
-import { KanbanBoard } from '@/components/KanbanBoard';
+import { Board } from '@/components/Board';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
-      <main className="container mx-auto max-w-7xl">
-        <KanbanBoard />
+      <main className="flex-1 container mx-auto max-w-7xl">
+        <Board />
       </main>
     </div>
   );

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import DnD Kit styles */
+@import '@dnd-kit/core/dist/style.css';
+@import '@dnd-kit/sortable/dist/style.css';
+
 /* Gen-Z Kanban Design System - All colors MUST be HSL */
 
 @layer base {
