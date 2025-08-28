@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -35,7 +35,7 @@ interface TaskCardProps {
   task: Task;
 }
 
-export function TaskCard({ task }: TaskCardProps) {
+export const TaskCard = forwardRef<HTMLDivElement, TaskCardProps>(({ task }, ref) => {
   const isMobile = useIsMobile();
   const { updateTask, deleteTask } = useKanbanStore();
   
@@ -51,11 +51,22 @@ export function TaskCard({ task }: TaskCardProps) {
     transform,
     transition,
     isDragging,
-  } = useSortable({ id: task.id });
+  } = useSortable({ id: `task-${task.id}` });
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+  };
+
+  const combinedRef = (node: HTMLDivElement) => {
+    setNodeRef(node);
+    if (ref) {
+      if (typeof ref === 'function') {
+        ref(node);
+      } else {
+        ref.current = node;
+      }
+    }
   };
 
   const handleSave = () => {
@@ -102,7 +113,7 @@ export function TaskCard({ task }: TaskCardProps) {
   if (isDragging) {
     return (
       <div
-        ref={setNodeRef}
+        ref={combinedRef}
         style={style}
         className="opacity-50"
       >
@@ -117,7 +128,7 @@ export function TaskCard({ task }: TaskCardProps) {
 
   return (
     <motion.div
-      ref={setNodeRef}
+      ref={combinedRef}
       style={style}
       layout
       initial={{ opacity: 0, y: 20 }}
@@ -264,7 +275,7 @@ export function TaskCard({ task }: TaskCardProps) {
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <div className="flex items-center gap-1">
               <Calendar className="h-3 w-3" />
-              <span>{task.createdAt.toLocaleDateString()}</span>
+              <span>{new Date(task.createdAt).toLocaleDateString()}</span>
             </div>
             
             {task.completedAt && (
@@ -278,4 +289,4 @@ export function TaskCard({ task }: TaskCardProps) {
       </Card>
     </motion.div>
   );
-}
+});
